@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include <string.h>
+int main(int argc, const char * argv[])
+{
+	FILE *fp;
+	char ch;
+	int chars=0;
+	int words=0;
+	int lines=0;
+    if((fp=fopen(argv[2],"r"))==NULL)
+ {
+   printf("无法打开此文件\n");
+   exit(0);
+  }
+ while((ch=fgetc(fp))!=EOF)
+{
+   chars++;
+  if(ch==' ')
+   {
+    words++;
+   } 
+ else if(ch=='\n')
+  {
+    words++;
+    lines++;
+   }
+ }
+    if(strcmp(argv[1],"-c")==0) printf("字符数:%d\n",chars);
+        else if(strcmp(argv[1],"-w")==0) printf("单词数:%d\n",words);
+        else if(strcmp(argv[1],"-l")==0) printf("行数:%d\n",lines);
+    
+        return 0;
+}
