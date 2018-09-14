@@ -7,22 +7,19 @@ int main(int argc, const char * argv[])
 	char ch;
 	int chars=0;
 	int words=0;
-	int lines=1;
+	int lines=0;
     if((fp=fopen(argv[2],"r"))==NULL)
  {
    printf("无法打开此文件\n");
    exit(0);
   }
  while((ch=fgetc(fp))!=EOF)
-{	
-  if((ch>='A'&&ch<='Z')||(ch>='a'&&ch<='z'))
-    {
-	 chars++;
-    }
-  else if(ch==' ')
+{
+   chars++;
+  if(ch==' ')
    {
     words++;
-   }
+   } 
  else if(ch=='\n')
   {
     words++;
